@@ -8,6 +8,7 @@ rules:
   no-unused-components: error
 theme:
   openapi:
+    hideDownloadButton: true
     htmlTemplate: ./docs/index.html
     theme:
       colors:
