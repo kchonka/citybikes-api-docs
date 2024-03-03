@@ -1,8 +1,7 @@
 openapi: 3.1.0
 info:
   title: CityBikes API Documentation
-  description: |
-    # Introduction
+  description: |-
     This is document explains how to use the CityBikes API.  
 
     CityBikes, powered by [PyBikes](https://github.com/eskerda/pybikes),  is an open-source project providing information about global  bike-sharing transportation services.  
@@ -19,7 +18,7 @@ paths:
   /networks:
     get:
       summary: GET /networks
-      description: 'Data about all available bike networks around the world, including  their names and IDs. '
+      description: 'This endpoint provides data about all available bike networks  around the world, including their names and IDs. '
       tags:
         - Networks
       responses:
