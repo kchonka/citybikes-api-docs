@@ -6,14 +6,18 @@ info:
 
     CityBikes, powered by [PyBikes](https://github.com/eskerda/pybikes),  is an open-source project providing information about global  bike-sharing transportation services.  
 
-    **Note:** This documentation is for educational purposes, aimed to use  Redoc to improve the existing documentation  [located here](https://api.citybik.es/v2/).  
+    **Note:** This documentation is for educational purposes, aimed at using Redoc to improve the [existing documentation](https://api.citybik.es/v2/).
 tags:
   - name: Authentication
     description: No authentication or API key required.
   - name: Base URL
     description: The base URL for the API is `http://api.citybik.es/v2`
   - name: Networks
-    description: A network is a collection of bikes available for a short-term rental.  Data for a network includes information about the networks, their  names, IDs, stations, available bikes, and locations.
+    description: |-
+      A network is a collection of bikes available for a short-term rental.   
+
+
+      Data for a network includes information about the networks, their  names, IDs, stations, available bikes, and locations.
 paths:
   /networks:
     get:
@@ -21,11 +25,57 @@ paths:
       description: 'This endpoint provides data about all available bike networks  around the world, including their names and IDs. '
       tags:
         - Networks
+      parameters:
+        - in: query
+          name: id
+          required: false
+          schema:
+            type: string
+          description: Filters out the bike network ID
+        - in: query
+          name: name
+          required: false
+          schema:
+            type: string
+          description: Filters out the bike network name
+        - in: query
+          name: href
+          required: false
+          schema:
+            type: string
+          description: Filters out the bike network's API endpoint
       responses:
         '200':
-          description: A list of networks.
+          description: A list of bike networks.
           content:
             application/json:
               schema:
                 type: list
-components: {}
+                $ref: '#/components/schemas/ListOfNetworks'
+components:
+  schemas:
+    BikeNetwork:
+      description: A singular bike network.
+      type: object
+      properties:
+        company:
+          type: list
+          description: List of companies involved with the bike network.
+        href:
+          type: string
+          description: The network's API endpoint.
+        id:
+          type: string
+          description: The ID of the bike network.
+        location:
+          type: object
+          description: Location of the bike network.
+        name:
+          type: string
+          description: The name of the bike network.
+    ListOfNetworks:
+      description: A list of bike networks.
+      type: list
+      properties:
+        networks:
+          description: Bike networks.
