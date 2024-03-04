@@ -41,6 +41,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BikeNetworks'
+  /networks/{network_id}:
+    get:
+      summary: GET /networks/{network_id}
+      description: >-
+        This endpoint provides data about a specific bike network, including 
+        all the available stations and bikes.  
+        
+        
+        A station is a dock from which a bike can be rented and returned to. 
+      tags:
+        - Networks
+      parameters:
+        - name: network_id
+          in: path
+          required: true
+          description: The ID of the bike network.
+          example: xian-public-bicycle
+        - name: fields
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - id
+              - name
+              - company
+              - location
+              - href
+          description: Fields to filter for; results will render only filtered values.
+      responses:
+        '200':
+          description: A list of bike networks.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BikeNetworks'
 components:
   schemas:
     BikeNetworks:
@@ -51,9 +87,41 @@ components:
           type: array
           description: Bike networks.
           items:
-            $ref: '#/components/schemas/BikeNetwork'
-    BikeNetwork:
-      description: Information about a singular bike network.
+            $ref: '#/components/schemas/BikeNetworkSummary'
+    BikeNetworkDetailed:
+      description: Detailed information about a singular bike network.
+      type: object
+      properties:
+        company:
+          type: list
+          description: List of companies involved with the bike network.
+          items:
+            type: string
+        href: 
+          type: string
+          description: The network's API endpoint.
+        id:
+          type: string
+          description: The ID of the bike network.
+        location:
+          type: object
+          description: Location of the bike network.
+          $ref: '#/components/schemas/Location'
+        name:
+          type: string
+          description: The name of the bike network.
+      example:
+        company: [Cyclopolis Systems]
+        href: /v2/networks/cyclopolis-maroussi
+        id: cyclopolis-maroussi
+        location:
+          city: Maroussi
+          country: GR
+          latitude: 38.0568722388
+          longitude: 23.8083299536
+        name: Cyclopolis
+    BikeNetworkSummary:
+      description: Summarized information about a singular bike network.
       type: object
       properties:
         company:
@@ -91,15 +159,19 @@ components:
         city:
           type: string
           description: The name of the city.
+          example: Miami, FL
         country:
           type: string
           description: The country code/abbreviation.
+          example: US
         latitude:
           type: number
           description: The latitude coordinate.
+          example: 25.790654
         longitude:
           type: number
           description: The longitude coordinate.
+          example: -80.1300455
         
 
 
