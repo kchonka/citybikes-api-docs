@@ -46,10 +46,7 @@ paths:
       summary: GET /networks/{network_id}
       description: >-
         This endpoint provides data about a specific bike network, including 
-        all the available stations and bikes.  
-        
-        
-        A station is a dock from which a bike can be rented and returned to. 
+        all the available stations and bikes.
       tags:
         - Networks
       parameters:
@@ -172,6 +169,55 @@ components:
           type: number
           description: The longitude coordinate.
           example: -80.1300455
+    Station:
+      description: A dock from which a bike can be rented and returned to. 
+      type: object
+      properties:
+        empty_slots:
+          type: integer
+          description: The number of empty spaces avaliable in the bike station.
+          example: 7
+        free_bikes:
+          type: integer
+          description: The number of bikes avaliable at the bike station.
+          example: 5
+        id:
+          type: string
+          description: The unique ID of the bike station.
+          example: 81cd2f7eb1e66820021e319b59196e52
+        latitude:
+          type: number
+          description: The latitude coordinate of the bike station.
+          example: 52.668746
+        longitude:
+          type: number
+          description: The longitude coordinate of the bike station.
+          example: -8.627809
+        name:
+          type: string
+          description: The name of the bike station.
+          example: Saint Mary's Cathedral
+        timestamp:
+          type: string
+          descripton: UTC Zulu timestamp of the last time station info was updated in the CityBikes system.
+          example: "2024-03-04T18:14:34.202000Z"
+        extra:
+          type: object
+          description: Additional information
+          required: false
+          items:
+            slots:
+              type: integer
+              description: Total slots in the bike station.
+              example: 20
+            uid:
+              type: integer
+              description: Unique identifier
+              example: 3024
+
+
+
+
         
 
 
