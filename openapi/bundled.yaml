@@ -16,7 +16,6 @@ tags:
     description: |-
       A network is a collection of bikes available for a short-term rental.   
 
-
       Data for a network includes information about the networks, their  names, IDs, stations, available bikes, and locations.
 paths:
   /networks:
@@ -50,17 +49,27 @@ paths:
           content:
             application/json:
               schema:
-                type: list
-                $ref: '#/components/schemas/ListOfNetworks'
+                $ref: '#/components/schemas/BikeNetworks'
 components:
   schemas:
+    BikeNetworks:
+      description: Information about avaliable global bike networks.
+      type: object
+      properties:
+        networks:
+          type: array
+          description: Bike networks.
+          items:
+            $ref: '#/components/schemas/BikeNetwork'
     BikeNetwork:
-      description: A singular bike network.
+      description: Information about a singular bike network.
       type: object
       properties:
         company:
           type: list
           description: List of companies involved with the bike network.
+          items:
+            type: string
         href:
           type: string
           description: The network's API endpoint.
@@ -70,12 +79,35 @@ components:
         location:
           type: object
           description: Location of the bike network.
+          items:
+            $ref: '#/components/schemas/Location'
         name:
           type: string
           description: The name of the bike network.
-    ListOfNetworks:
-      description: A list of bike networks.
-      type: list
+      example:
+        company:
+          - Cyclopolis Systems
+        href: /v2/networks/cyclopolis-maroussi
+        id: cyclopolis-maroussi
+        location:
+          city: Maroussi
+          country: GR
+          latitude: 38.0568722388
+          longitude: 23.8083299536
+        name: Cyclopolis
+    Location:
+      description: The location of a bike network.
+      type: object
       properties:
-        networks:
-          description: Bike networks.
+        city:
+          type: string
+          description: The name of the city.
+        country:
+          type: string
+          description: The country code/abbreviation.
+        latitude:
+          type: number
+          description: The latitude coordinate.
+        longitude:
+          type: number
+          description: The longitude coordinate.
