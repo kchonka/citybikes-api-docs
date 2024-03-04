@@ -17,8 +17,8 @@ paths:
     get:
       summary: GET /networks
       description: >-
-        This endpoint provides data about all available bike networks 
-        around the world, including their names and IDs. 
+        This endpoint provides data about all available bike networks, 
+        including their names, IDs, locations, and associated companies.
       tags:
         - Networks
       parameters:
