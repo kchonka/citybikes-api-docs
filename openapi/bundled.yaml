@@ -79,8 +79,7 @@ components:
         location:
           type: object
           description: Location of the bike network.
-          items:
-            $ref: '#/components/schemas/Location'
+          $ref: '#/components/schemas/Location'
         name:
           type: string
           description: The name of the bike network.
