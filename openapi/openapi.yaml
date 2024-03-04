@@ -69,13 +69,22 @@ paths:
           description: Fields to filter for; results will render only filtered values.
       responses:
         '200':
-          description: A list of bike networks.
+          description: Detailed information about a bike network.
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BikeNetworks'
+                $ref: '#/components/schemas/BikeNetwork'
 components:
   schemas:
+    BikeNetwork:
+      description: Information about a bike network.
+      type: object
+      properties:
+        network:
+          type: array
+          description: Information about the network's location, name, ID, and stations.
+          items:
+            $ref: '#/components/schemas/BikeNetworkDetailed'
     BikeNetworks:
       description: Information about avaliable global bike networks.
       type: object
@@ -107,6 +116,11 @@ components:
         name:
           type: string
           description: The name of the bike network.
+        stations:
+          type: list
+          description: List of all the network's bike stations.
+          items:
+            $ref: '#/components/schemas/Station'
       example:
         company: [Cyclopolis Systems]
         href: /v2/networks/cyclopolis-maroussi
@@ -214,7 +228,14 @@ components:
               type: integer
               description: Unique identifier
               example: 3024
-
+    Stations:
+      type: object
+      properties:
+        stations:
+          type: array
+          description: A list of bike stations.
+          items:
+            $ref: '#/components/schemas/Station'
 
 
 
