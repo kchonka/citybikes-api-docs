@@ -22,24 +22,18 @@ paths:
       tags:
         - Networks
       parameters:
-        - in: query
-          name: id
+        - name: fields
+          in: query
           required: false
           schema:
             type: string
-          description: Filters out the bike network ID
-        - in: query
-          name: name
-          required: false
-          schema:
-            type: string
-          description: Filters out the bike network name
-        - in: query
-          name: href
-          required: false
-          schema:
-            type: string
-          description: Filters out the bike network's API endpoint
+            enum:
+              - id
+              - name
+              - company
+              - location
+              - href
+          description: Fields to filter for; results will render only filtered values.
       responses:
         '200':
           description: A list of bike networks.
