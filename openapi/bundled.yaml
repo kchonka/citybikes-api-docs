@@ -104,12 +104,16 @@ components:
           description: List of companies involved with the bike network.
           items:
             type: string
+          example:
+            - DecoBike LLC
         href:
           type: string
           description: The network's API endpoint.
+          example: /v2/networks/citi-bike-miami
         id:
           type: string
           description: The ID of the bike network.
+          example: citi-bike-miami
         location:
           type: object
           description: Location of the bike network.
@@ -117,6 +121,7 @@ components:
         name:
           type: string
           description: The name of the bike network.
+          example: Citi Bike Miami
         stations:
           description: List of all the network's bike stations.
           type: array
@@ -182,39 +187,48 @@ components:
         empty_slots:
           type: integer
           description: The number of empty spaces avaliable in the bike station.
-          example: 7
+          example: 9
         extra:
           type: object
+          description: Extra information about the bike station.
           properties:
             slots:
               type: integer
+              required: false
               description: The total number of bike slots in the station.
               example: 11
             uid:
-              type: integer
+              type:
+                - integer
+                - string
               description: The unique identifier of the station.
-              example: 3001
+              required: false
+              example: '000605'
+            address:
+              type: string
+              description: Address location of the bike station.
+              example: Virginia St & Florida Ave
         free_bikes:
           type: integer
           description: The number of bikes avaliable at the bike station.
-          example: 5
+          example: 7
         id:
           type: string
           description: The unique ID of the bike station.
-          example: 81cd2f7eb1e66820021e319b59196e52
+          example: 50c12c755c09aad1e465827f3c19ea1c
         latitude:
           type: number
           description: The latitude coordinate of the bike station.
-          example: 52.668746
+          example: 25.729275
         longitude:
           type: number
           description: The longitude coordinate of the bike station.
-          example: -8.627809
+          example: -80.241581
         name:
           type: string
           description: The name of the bike station.
-          example: Saint Mary's Cathedral
+          example: 000605 - Virginia St & Florida Ave
         timestamp:
           type: string
           description: Timestamp of the last time station info was updated in the system.
-          example: '2024-03-04T18:14:34.202000Z'
+          example: '2024-03-05T18:30:58.668000Z'
