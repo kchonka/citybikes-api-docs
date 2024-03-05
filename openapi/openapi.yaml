@@ -181,6 +181,17 @@ components:
           type: integer
           description: The number of empty spaces avaliable in the bike station.
           example: 7
+        extra:
+          type: object
+          properties:
+            slots:
+              type: integer
+              description: The total number of bike slots in the station.
+              example: 11
+            uid:
+              type: integer
+              description: The unique identifier of the station.
+              example: 3001
         free_bikes:
           type: integer
           description: The number of bikes avaliable at the bike station.
@@ -204,15 +215,8 @@ components:
         timestamp:
           type: string
           descripton: Timestamp of the last time station info was updated in the system.
-          example: 2024-03-04T18:14:34.202000Z
-    Stations:
-      type: object
-      properties:
-        stations:
-          type: array
-          description: A list of bike stations.
-          items:
-            $ref: '#/components/schemas/Station'
+          example: "2024-03-04T18:14:34.202000Z"
+
 
 
 
