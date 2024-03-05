@@ -118,21 +118,10 @@ components:
           type: string
           description: The name of the bike network.
         stations:
-          type: list
           description: List of all the network's bike stations.
+          type: array
           items:
             $ref: '#/components/schemas/Station'
-      example:
-        company:
-          - Cyclopolis Systems
-        href: /v2/networks/cyclopolis-maroussi
-        id: cyclopolis-maroussi
-        location:
-          city: Maroussi
-          country: GR
-          latitude: 38.0568722388
-          longitude: 23.8083299536
-        name: Cyclopolis
     BikeNetworkSummary:
       description: Summarized information about a singular bike network.
       type: object
@@ -216,21 +205,8 @@ components:
           example: Saint Mary's Cathedral
         timestamp:
           type: string
-          descripton: UTC Zulu timestamp of the last time station info was updated in the CityBikes system.
+          descripton: Timestamp of the last time station info was updated in the system.
           example: '2024-03-04T18:14:34.202000Z'
-        extra:
-          type: object
-          description: Additional information
-          required: false
-          items:
-            slots:
-              type: integer
-              description: Total slots in the bike station.
-              example: 20
-            uid:
-              type: integer
-              description: Unique identifier
-              example: 3024
     Stations:
       type: object
       properties:
