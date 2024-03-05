@@ -73,6 +73,7 @@ paths:
               - company
               - location
               - href
+              - stations
           description: Fields to filter for; results will render only filtered values.
       responses:
         '200':
@@ -92,7 +93,7 @@ paths:
           content:
             application/json:
               example:
-                error: Not Found. The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+                error: Not Found
                 status: 404
 components:
   schemas:

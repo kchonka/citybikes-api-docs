@@ -257,15 +257,6 @@ components:
           required: false
           description: The number of e-bikes at the station.
           example: 0
-
-
-
-
-        
-
-
-
-
 tags:
   - name: Authentication 
     description: No authentication or API key required. 
