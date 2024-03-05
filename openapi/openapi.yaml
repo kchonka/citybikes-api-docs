@@ -205,7 +205,23 @@ components:
             address:
               type: string
               description: Address location of the bike station.
+              required: false
               example: "Virginia St & Florida Ave"
+            online:
+              type: boolean
+              description: Whether or not the bikes are online.
+              required: false
+              example: true
+            normal_bikes:
+              type: integer
+              required: false
+              description: The number of regular bikes at the station.
+              example: 5
+            e_bikes:
+              type: integer
+              required: false
+              description: The number of e-bikes at the station.
+              example: 0
         free_bikes:
           type: integer
           description: The number of bikes avaliable at the bike station.
