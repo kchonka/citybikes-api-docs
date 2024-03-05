@@ -40,7 +40,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BikeNetworks'
+                type: object
+                properties:
+                  networks:
+                    type: array
+                    description: Bike networks.
+                    items:
+                      $ref: '#/components/schemas/BikeNetworkSummary'
   /networks/{network_id}:
     get:
       summary: GET /networks/{network_id}
@@ -73,18 +79,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BikeNetwork'
+                type: object
+                properties:
+                  network:
+                    type: array
+                    description: Information about the network's location, name, ID, and stations.
+                    items:
+                      $ref: '#/components/schemas/BikeNetworkDetailed'
 components:
   schemas:
-    BikeNetwork:
-      description: Information about a bike network.
-      type: object
-      properties:
-        network:
-          type: array
-          description: Information about the network's location, name, ID, and stations.
-          items:
-            $ref: '#/components/schemas/BikeNetworkDetailed'
     BikeNetworks:
       description: Information about avaliable global bike networks.
       type: object
