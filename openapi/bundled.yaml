@@ -87,6 +87,13 @@ paths:
                     description: Information about the network's location, name, ID, and stations.
                     items:
                       $ref: '#/components/schemas/BikeNetworkDetailed'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                error: Not Found. The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+                status: 404
 components:
   schemas:
     BikeNetworks:

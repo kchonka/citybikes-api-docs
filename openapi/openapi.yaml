@@ -72,6 +72,7 @@ paths:
               - company
               - location
               - href
+              - stations
           description: Fields to filter for; results will render only filtered values.
       responses:
         '200':
@@ -86,6 +87,13 @@ paths:
                     description: Information about the network's location, name, ID, and stations.
                     items:
                       $ref: '#/components/schemas/BikeNetworkDetailed'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                error: Not Found
+                status: 404
 components:
   schemas:
     BikeNetworks:
