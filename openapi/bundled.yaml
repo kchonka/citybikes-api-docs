@@ -216,5 +216,5 @@ components:
           example: Saint Mary's Cathedral
         timestamp:
           type: string
-          descripton: Timestamp of the last time station info was updated in the system.
+          description: Timestamp of the last time station info was updated in the system.
           example: '2024-03-04T18:14:34.202000Z'
