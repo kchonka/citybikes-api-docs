@@ -10,6 +10,7 @@ theme:
   openapi:
     hideDownloadButton: true
     expandResponses: 'all'
+    schemaExpansionLevel: 'all'
     htmlTemplate: ./docs/index.html
     theme:
       colors:
