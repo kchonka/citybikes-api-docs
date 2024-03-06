@@ -11,6 +11,7 @@ theme:
     hideDownloadButton: true
     expandResponses: 'all'
     schemaExpansionLevel: 'all'
+    jsonSampleExpandLevel: 'all'
     htmlTemplate: ./docs/index.html
     theme:
       colors:
