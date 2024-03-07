@@ -7,11 +7,14 @@ info:
     CityBikes, powered by [PyBikes](https://github.com/eskerda/pybikes),  is an open-source project providing information about global  bike-sharing transportation services.  
 
     **Note:** This documentation is for educational purposes, aimed at using Redoc to improve the [existing documentation](https://api.citybik.es/v2/).
+    # Authentication  
+    No authentication or API key required. 
+    # Base URL  
+    The base URL for the API is `http://api.citybik.es/v2`
+  x-logo:
+    url: https://camo.githubusercontent.com/3cab180da3ff41b6d1cfc114109cff8ff10a4d13d6e218e5a616109bfe6cd93d/687474703a2f2f6369747962696b2e65732f66696c65732f707962696b65732e706e67
+    altText: PyBikes Logo
 tags:
-  - name: Authentication
-    description: No authentication or API key required.
-  - name: Base URL
-    description: The base URL for the API is `http://api.citybik.es/v2`
   - name: Networks
     description: |-
       A network is a collection of bikes available for a short-term rental.   
