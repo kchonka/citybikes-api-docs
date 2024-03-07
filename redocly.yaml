@@ -14,12 +14,25 @@ theme:
     jsonSampleExpandLevel: 'all'
     htmlTemplate: ./docs/index.html
     theme:
+      logo:
+        gutter: "35px"
       colors:
         primary:
           main: "#32329f"
       typography:
         headings:
           fontWeight: "1500"
+      rightPanel:
+        width: 45%
+        backgroundColor: "#242847"
+      sidebar:
+        width: "260px"
+        textColor: "#000000"
+        backgroundColor: "#d9f2fa"
+      spacing:
+        sectionVertical: 10
+        sectionHorizontal: 40
+      disableSidebar: true
     generateCodeSamples:
       languages:  # Array of language config objects; indicates in which languages to generate code samples.
         - lang: curl
