@@ -17,6 +17,9 @@ theme:
       colors:
         primary:
           main: "#32329f"
+      typography:
+        headings:
+          fontWeight: "1500"
     generateCodeSamples:
       languages:  # Array of language config objects; indicates in which languages to generate code samples.
         - lang: curl
