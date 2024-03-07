@@ -12,7 +12,7 @@ info:
     # Base URL  
     The base URL for the API is `http://api.citybik.es/v2`
   x-logo:
-    url: https://camo.githubusercontent.com/3cab180da3ff41b6d1cfc114109cff8ff10a4d13d6e218e5a616109bfe6cd93d/687474703a2f2f6369747962696b2e65732f66696c65732f707962696b65732e706e67
+    url: https://eskerda.com/wp-content/uploads/2014/05/citybikes-logo.png
     altText: PyBikes Logo
 tags:
   - name: Networks
