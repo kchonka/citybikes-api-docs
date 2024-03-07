@@ -32,7 +32,8 @@ theme:
       spacing:
         sectionVertical: 10
         sectionHorizontal: 40
-      disableSidebar: true
+    disableSidebar: true
+    disableSearch: true
     generateCodeSamples:
       languages:  # Array of language config objects; indicates in which languages to generate code samples.
         - lang: curl
