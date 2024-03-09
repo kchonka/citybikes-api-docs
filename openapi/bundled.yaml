@@ -23,7 +23,7 @@ tags:
 paths:
   /networks:
     get:
-      summary: GET /networks
+      summary: Get all bike networks
       description: This endpoint provides data about all available bike networks,  including their names, IDs, locations, and associated companies.
       tags:
         - Networks
@@ -55,8 +55,11 @@ paths:
                       $ref: '#/components/schemas/BikeNetworkSummary'
   /networks/{network_id}:
     get:
-      summary: GET /networks/{network_id}
-      description: This endpoint provides data about a specific bike network, including  all the available stations and bikes.
+      summary: GET data about a specific bike network
+      description: |-
+        This endpoint provides data about a specific bike network, including  all the available stations and bikes.  
+
+        A **station** is a dock from which a bike can be rented and returned to. 
       tags:
         - Networks
       parameters:
