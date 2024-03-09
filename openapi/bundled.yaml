@@ -6,7 +6,9 @@ info:
 
     CityBikes, powered by [PyBikes](https://github.com/eskerda/pybikes),  is an open-source project providing information about global  bike-sharing transportation services.  
 
-    **Note:** This documentation is for educational purposes, aimed at using Redoc to improve the [existing documentation](https://api.citybik.es/v2/).
+    This document aims to leverage Redoc to enhance  the [existing documentation](https://api.citybik.es/v2/).
+
+    *Last updated: March 9, 2024*
     # Authentication  
     No authentication or API key required. 
     # Base URL  
