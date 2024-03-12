@@ -2,19 +2,23 @@ openapi: 3.1.0
 info:
   title: CityBikes API Documentation
   description: >-
-    This is document explains how to use the CityBikes API.  
+    This API documentation explains how to use the CityBikes API
+    for developers. 
+    
+    
+    It leverages Redoc to enhance the 
+    [existing documentation](https://api.citybik.es/v2/) by elaborating 
+    on all avaliable endpoints, requests and responses, schemas,
+    error codes, authentication requirements, and examples. 
 
 
-    CityBikes, powered by [PyBikes](https://github.com/eskerda/pybikes), 
+    [CityBikes](https://www.citybik.es/), powered by 
+    [PyBikes](https://github.com/eskerda/pybikes), 
     is an open-source project providing information about global 
     bike-sharing transportation services.  
 
 
-    This document aims to leverage Redoc to enhance 
-    the [existing documentation](https://api.citybik.es/v2/).
-
-
-    *Last updated: March 9, 2024*
+    *Last updated: March 12, 2024*
 
     # Authentication  
     
