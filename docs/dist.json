@@ -1,0 +1,358 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CityBikes API Documentation",
+    "description": "This API documentation explains how to use the CityBikes API for developers. \n\nIt leverages Redoc to enhance the  [existing documentation](https://api.citybik.es/v2/) by elaborating  on all avaliable endpoints, requests and responses, schemas, error codes, authentication requirements, and examples. \n\n[CityBikes](https://www.citybik.es/), powered by  [PyBikes](https://github.com/eskerda/pybikes),  is an open-source project providing information about global  bike-sharing transportation services.  \n\n*Last updated: March 12, 2024*\n# Authentication  \nNo authentication or API key required. \n# Base URL  \nThe base URL for the API is `http://api.citybik.es/v2`",
+    "x-logo": {
+      "url": "https://eskerda.com/wp-content/uploads/2014/05/citybikes-logo.png",
+      "altText": "PyBikes Logo"
+    }
+  },
+  "tags": [
+    {
+      "name": "Networks",
+      "description": "A network is a collection of bikes available for a short-term rental.   \n\nData for a network includes information about the networks, their  names, IDs, stations, available bikes, and locations."
+    },
+    {
+      "name": "Field Filtering",
+      "description": "Fields can be filtered by adding a `?fields=list,of,fields` parameter to any request. \n\nFor example, `http://api.citybik.es/v2/networks?fields=id,name,href` will render  just the name, id and API endpoint of each network:\n\n````\n  {\n    \"networks\": [\n      {\n          \"href\": \"/v2/networks/velib\", \n          \"id\": \"velib\", \n          \"name\": \"V\\u00e9lib'\"\n      }, \n      {\n          \"href\": \"/v2/networks/valenbisi\", \n          \"id\": \"valenbisi\", \n          \"name\": \"Valenbisi\"\n      }, \n      {\n          \"href\": \"/v2/networks/ecobici\", \n          \"id\": \"ecobici\", \n          \"name\": \"EcoBici\"\n      },\n      {...}\n    ]\n  }\n````\nCurrently, field visibility only gets into the first document. However, in the future, parameters to allow filterings like location.city,station.* will be implemented."
+    }
+  ],
+  "paths": {
+    "/networks": {
+      "get": {
+        "summary": "Get all bike networks",
+        "description": "This endpoint provides data about all available bike networks,  including their names, IDs, locations, and associated companies.",
+        "tags": [
+          "Networks"
+        ],
+        "parameters": [
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "id",
+                "name",
+                "company",
+                "location",
+                "href"
+              ]
+            },
+            "description": "Fields to filter for; results will render only filtered values."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of bike networks.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "networks": {
+                      "type": "array",
+                      "description": "Bike networks.",
+                      "items": {
+                        "$ref": "#/components/schemas/BikeNetworkSummary"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/networks/{network_id}": {
+      "get": {
+        "summary": "GET data about a specific bike network",
+        "description": "This endpoint provides data about a specific bike network, including  all the available stations and bikes.  \n\nA **station** is a dock from which a bike can be rented and returned to. ",
+        "tags": [
+          "Networks"
+        ],
+        "parameters": [
+          {
+            "name": "network_id",
+            "in": "path",
+            "required": true,
+            "description": "The ID of the bike network.",
+            "example": "xian-public-bicycle"
+          },
+          {
+            "name": "fields",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "id",
+                "name",
+                "company",
+                "location",
+                "href",
+                "stations"
+              ]
+            },
+            "description": "Fields to filter for; results will render only filtered values."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detailed information about a bike network.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "network": {
+                      "type": "array",
+                      "description": "Information about the network's location, name, ID, and stations.",
+                      "items": {
+                        "$ref": "#/components/schemas/BikeNetworkDetailed"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Not Found",
+                  "status": 404
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BikeNetworks": {
+        "description": "Information about avaliable global bike networks.",
+        "type": "object",
+        "properties": {
+          "networks": {
+            "type": "array",
+            "description": "Bike networks.",
+            "items": {
+              "$ref": "#/components/schemas/BikeNetworkSummary"
+            }
+          }
+        }
+      },
+      "BikeNetworkDetailed": {
+        "description": "Detailed information about a singular bike network.",
+        "type": "object",
+        "properties": {
+          "company": {
+            "type": "list",
+            "description": "List of companies involved with the bike network.",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "DecoBike LLC"
+            ]
+          },
+          "href": {
+            "type": "string",
+            "description": "The network's API endpoint.",
+            "example": "/v2/networks/citi-bike-miami"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the bike network.",
+            "example": "citi-bike-miami"
+          },
+          "location": {
+            "type": "object",
+            "description": "Location of the bike network.",
+            "$ref": "#/components/schemas/Location"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the bike network.",
+            "example": "Citi Bike Miami"
+          },
+          "stations": {
+            "description": "List of all the network's bike stations.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Station"
+            }
+          }
+        }
+      },
+      "BikeNetworkSummary": {
+        "description": "Summarized information about a singular bike network.",
+        "type": "object",
+        "properties": {
+          "company": {
+            "type": "list",
+            "description": "List of companies involved with the bike network.",
+            "items": {
+              "type": "string"
+            }
+          },
+          "href": {
+            "type": "string",
+            "description": "The network's API endpoint."
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the bike network."
+          },
+          "location": {
+            "type": "object",
+            "description": "Location of the bike network.",
+            "$ref": "#/components/schemas/Location"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the bike network."
+          }
+        },
+        "example": {
+          "company": [
+            "Cyclopolis Systems"
+          ],
+          "href": "/v2/networks/cyclopolis-maroussi",
+          "id": "cyclopolis-maroussi",
+          "location": {
+            "city": "Maroussi",
+            "country": "GR",
+            "latitude": 38.0568722388,
+            "longitude": 23.8083299536
+          },
+          "name": "Cyclopolis"
+        }
+      },
+      "Location": {
+        "description": "The location of a bike network.",
+        "type": "object",
+        "properties": {
+          "city": {
+            "type": "string",
+            "description": "The name of the city.",
+            "example": "Miami, FL"
+          },
+          "country": {
+            "type": "string",
+            "description": "The country code/abbreviation.",
+            "example": "US"
+          },
+          "latitude": {
+            "type": "number",
+            "description": "The latitude coordinate.",
+            "example": 25.790654
+          },
+          "longitude": {
+            "type": "number",
+            "description": "The longitude coordinate.",
+            "example": -80.1300455
+          }
+        }
+      },
+      "Station": {
+        "description": "A dock from which a bike can be rented and returned to.",
+        "type": "object",
+        "properties": {
+          "empty_slots": {
+            "type": "integer",
+            "description": "The number of empty spaces avaliable in the bike station.",
+            "example": 9
+          },
+          "extra": {
+            "type": "object",
+            "$ref": "#/components/schemas/ExtraStationInfo"
+          },
+          "free_bikes": {
+            "type": "integer",
+            "description": "The number of bikes avaliable at the bike station.",
+            "example": 7
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique ID of the bike station.",
+            "example": "50c12c755c09aad1e465827f3c19ea1c"
+          },
+          "latitude": {
+            "type": "number",
+            "description": "The latitude coordinate of the bike station.",
+            "example": 25.729275
+          },
+          "longitude": {
+            "type": "number",
+            "description": "The longitude coordinate of the bike station.",
+            "example": -80.241581
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the bike station.",
+            "example": "000605 - Virginia St & Florida Ave"
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Timestamp of the last time station info was updated in the system.",
+            "example": "2024-03-05T18:30:58.668000Z"
+          }
+        }
+      },
+      "ExtraStationInfo": {
+        "description": "Extra information about a bike station.",
+        "type": "object",
+        "properties": {
+          "slots": {
+            "type": "integer",
+            "required": false,
+            "description": "The total number of bike slots in the station.",
+            "example": 11
+          },
+          "uid": {
+            "type": [
+              "integer",
+              "string"
+            ],
+            "description": "The unique identifier of the station.",
+            "required": false,
+            "example": "000605"
+          },
+          "address": {
+            "type": "string",
+            "description": "Address location of the bike station.",
+            "required": false,
+            "example": "Virginia St & Florida Ave"
+          },
+          "online": {
+            "type": "boolean",
+            "description": "Whether or not the bikes are online.",
+            "required": false,
+            "example": true
+          },
+          "normal_bikes": {
+            "type": "integer",
+            "required": false,
+            "description": "The number of regular bikes at the station.",
+            "example": 5
+          },
+          "e_bikes": {
+            "type": "integer",
+            "required": false,
+            "description": "The number of e-bikes at the station.",
+            "example": 0
+          }
+        }
+      }
+    }
+  }
+}
