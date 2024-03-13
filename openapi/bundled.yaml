@@ -22,6 +22,35 @@ tags:
       A network is a collection of bikes available for a short-term rental.   
 
       Data for a network includes information about the networks, their  names, IDs, stations, available bikes, and locations.
+  - name: Field Filtering
+    description: |-
+      Fields can be filtered by adding a `?fields=list,of,fields` parameter to any request. 
+
+      For example, `http://api.citybik.es/v2/networks?fields=id,name,href` will render  just the name, id and API endpoint of each network:
+
+      ````
+        {
+          "networks": [
+            {
+                "href": "/v2/networks/velib", 
+                "id": "velib", 
+                "name": "V\u00e9lib'"
+            }, 
+            {
+                "href": "/v2/networks/valenbisi", 
+                "id": "valenbisi", 
+                "name": "Valenbisi"
+            }, 
+            {
+                "href": "/v2/networks/ecobici", 
+                "id": "ecobici", 
+                "name": "EcoBici"
+            },
+            {...}
+          ]
+        }
+      ````
+      Currently, field visibility only gets into the first document. However, in the future, parameters to allow filterings like location.city,station.* will be implemented.
 paths:
   /networks:
     get:
