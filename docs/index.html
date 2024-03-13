@@ -18,7 +18,42 @@
     </style>
   </head>
   <body>
-    <redoc spec-url='dist.json'></redoc>
+    <redoc spec-url='dist.json'
+      theme='{
+        "hideDownloadButton": "true"
+        "expandResponses": "all"
+        "schemaExpansionLevel": "all"
+        "jsonSampleExpandLevel": "all"
+        "theme:"{
+          "logo": {
+            "gutter": "35px"
+          }
+          "colors": {
+            "primary": "#32329f"
+          }
+          "typography": {
+            "headings": {
+              "fontWeight": "1500"
+            }
+          }
+          "rightPanel": {
+            "width": "45%""
+            "backgroundColor": "#001d3d"
+          }
+          "sidebar": {
+            "width": "260px"
+            "textColor": "#000000"
+            "backgroundColor": "#d9f2fa"
+          }
+          "spacing": {
+            "sectionVertical": "10"
+            "sectionHorizontal": "40"
+          }
+        }
+        "disableSidebar": "true"
+        "disableSearch": "true"
+      }'>
+    </redoc>
     <script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script>
   </body>
 </html>
