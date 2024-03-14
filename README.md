@@ -1,5 +1,8 @@
 # Redoc CityBikes API Documentation
 
+--> View the documentation [here](https://kchonka.github.io/citybikes-api-docs/).
+
+
 This API documentation explains how to use the CityBikes API for developers. 
 
 
