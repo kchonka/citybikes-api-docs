@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "CityBikes API Documentation",
-    "description": "This API documentation explains how to use the CityBikes API for developers. \n\nIt leverages Redoc to enhance the  [existing documentation](https://api.citybik.es/v2/) by elaborating  on all avaliable endpoints, requests and responses, schemas, error codes, authentication requirements, and examples. \n\n[CityBikes](https://www.citybik.es/), powered by  [PyBikes](https://github.com/eskerda/pybikes),  is an open-source project providing information about global  bike-sharing transportation services.  \n\n*Last updated: March 12, 2024*\n# Authentication  \nNo authentication or API key required. \n# Base URL  \nThe base URL for the API is `http://api.citybik.es/v2`",
+    "description": "This API documentation explains how to use the CityBikes API for developers. \n\nIt leverages Redoc to enhance the  [existing documentation](https://api.citybik.es/v2/) by elaborating  on all avaliable endpoints, requests and responses, schemas, error codes, authentication requirements, and examples. \n\n[CityBikes](https://www.citybik.es/), powered by  [PyBikes](https://github.com/eskerda/pybikes),  is an open-source project providing information about global  bike-sharing transportation services.  \n\n*Last updated: March 14, 2024*\n# Authentication  \nNo authentication or API key required. \n# Base URL  \nThe base URL for the API is `http://api.citybik.es/v2`",
     "x-logo": {
       "url": "https://eskerda.com/wp-content/uploads/2014/05/citybikes-logo.png",
       "altText": "PyBikes Logo"
