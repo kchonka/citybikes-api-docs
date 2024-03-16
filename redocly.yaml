@@ -23,7 +23,6 @@ theme:
         headings:
           fontWeight: "1500"
       rightPanel:
-        width: 45%
         backgroundColor: "#001d3d"
       sidebar:
         width: "260px"
