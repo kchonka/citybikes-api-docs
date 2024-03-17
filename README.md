@@ -33,6 +33,12 @@ in the openapi directory:
 
 `redocly preview-docs openapi/bundled.yaml --config redocly.yaml`
 
+This also uses the redocly.yaml config file for styling/theme settings.
+
 3. To create a dist.json file in the docs directory for documentation that can be deployed online:
 
 `redocly bundle openapi/openapi.yaml -o docs/dist.json`
+
+## Notes
+
+For configuring Redoc in HTML, see: https://redocly.com/docs/redoc/deployment/html/  
