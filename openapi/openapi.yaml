@@ -320,6 +320,6 @@ tags:
         }
       ````
 
-      Currently, field visibility only gets into the first document. However, in
-      the future, parameters to allow filterings like location.city,station.* will
-      be implemented.
+      *Currently, field visibility only gets into the first document. 
+      In the future, parameters to allow filterings like location.city 
+      and location.station will be implemented.*
