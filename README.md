@@ -1,4 +1,4 @@
-# Redoc CityBikes API Documentation
+# CityBikes API Documentation
 
 Documentation hosted here: https://kchonka.github.io/citybikes-api-docs/
 
