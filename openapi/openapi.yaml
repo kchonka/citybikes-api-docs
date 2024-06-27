@@ -66,6 +66,10 @@ paths:
                     description: Bike networks.
                     items:
                       $ref: '#/components/schemas/BikeNetworkSummary'
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
   /networks/{network_id}:
     get:
       summary: GET data about a specific bike network
@@ -109,13 +113,10 @@ paths:
                     description: Information about the network's location, name, ID, and stations.
                     items:
                       $ref: '#/components/schemas/BikeNetworkDetailed'
+        '400':
+          description: Bad Request
         '404':
           description: Not Found
-          content:
-            application/json:
-              example:
-                error: Not Found
-                status: 404
 components:
   schemas:
     BikeNetworks:

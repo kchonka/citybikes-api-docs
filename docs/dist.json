@@ -63,6 +63,12 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       }
@@ -120,16 +126,11 @@
               }
             }
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "example": {
-                  "error": "Not Found",
-                  "status": 404
-                }
-              }
-            }
+            "description": "Not Found"
           }
         }
       }
