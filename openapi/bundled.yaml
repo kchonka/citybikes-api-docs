@@ -8,7 +8,7 @@ info:
 
     This documentation leverages Redoc to enhance the  [existing documentation](https://api.citybik.es/v2/) by elaborating  on all endpoints, requests and responses, schemas, error codes, authentication requirements, and examples. 
 
-    *Last updated: June 26, 2024*
+    *Last updated: June 27, 2024*
     # Authentication  
     No authentication or API key required. 
     # Base URL  
