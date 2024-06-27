@@ -9,7 +9,6 @@ rules:
 theme:
   openapi:
     hideDownloadButton: true
-    expandResponses: 'all'
     schemaExpansionLevel: 'all'
     jsonSampleExpandLevel: 'all'
     htmlTemplate: ./docs/index.html
